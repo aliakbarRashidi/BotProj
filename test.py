@@ -51,7 +51,7 @@ logger.info('Удаление из базы')
 bu.delete_from_base(table_name, where=True, where_column=where_column)
 
 
-followers = {1223123: {'username': '3123', 'is_private': 0}, 1223124: {'username': '3124', 'is_private': 0}}
+followers = [{'user_id': 1223123, 'username': '3123', 'is_private': 0}, {'user_id':1223124, 'username': '3124', 'is_private': 0}]
 logger.info('Добавление фолловеров')
 bu.add_followers(34214123, followers)
 

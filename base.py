@@ -1,6 +1,7 @@
 import os
 import sqlite3
 import datetime
+import hashlib
 
 
 class BaseUser:
@@ -61,6 +62,8 @@ class BaseUser:
             main_user_user_id INTEGER,
             follower_user_id INTEGER,
             date_follower DATETIME,
+            unfollow BOOLEAN,
+            date_unfollower DATETIME,
             FOREIGN KEY (main_user_user_id) REFERENCES users (user_id)
             ON DELETE CASCADE ON UPDATE NO ACTION
             FOREIGN KEY (follower_user_id) REFERENCES users (user_id)
@@ -81,7 +84,9 @@ class BaseUser:
             main_following_user_id text,
             main_user_user_id INTEGER,
             following_user_id INTEGER,
-            date_follower DATETIME,
+            date_following DATETIME,
+            unfollow BOOLEAN,
+            date_unfollowing DATETIME,
             FOREIGN KEY (main_user_user_id) REFERENCES users (user_id)
             ON DELETE CASCADE ON UPDATE NO ACTION
             FOREIGN KEY (following_user_id) REFERENCES users (user_id)
@@ -124,7 +129,7 @@ class BaseUser:
         c = self.conn.cursor()
         c.execute('''
         CREATE TABLE IF NOT EXISTS likes (
-             like_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+             like_id text PRIMARY KEY UNIQUE,
              post_id INTEGER,
              user_id INTEGER,
              like_b BOOLEAN DEFAULT False,
@@ -148,10 +153,14 @@ class BaseUser:
         c = self.conn.cursor()
         c.execute('''
         CREATE TABLE IF NOT EXISTS comments (
-             comment_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
+             comment_id text PRIMARY KEY NOT NULL UNIQUE,
              post_id INTEGER,
              user_id INTEGER,
              comment text,
+             comment_add DATETIME DEFAULT 0,
+             comment_remove DATETIME DEFAULT 0,
+             add BOOLEAN DEFAULT 1,
+             remove BOOLEAN DEFAULT 0,
              FOREIGN KEY (post_id) REFERENCES posts (post_id)
              ON DELETE CASCADE ON UPDATE NO ACTION,
              FOREIGN KEY (user_id) REFERENCES users (user_id)
@@ -177,6 +186,12 @@ class BaseUser:
              likes REAL DEFAULT 0,
              posts REAL DEFAULT 0,
              likable REAL DEFAULT 0,
+             fr BOOLEAN DEFAULT 0,
+             fw BOOLEAN DEFAULT 0, 
+             un_fr BOOLEAN DEFAULT 0,
+             un_fw BOOLEAN DEFAULT 0,
+             fw_dynamic REAL DEFAULT 0,
+             fr_dynamic REAL DEFAULT 0,
              FOREIGN KEY (user_id) REFERENCES users (user_id)
              ON DELETE CASCADE ON UPDATE NO ACTION
             );
@@ -213,35 +228,113 @@ class BaseUser:
         self.conn.commit()
         self.conn.close()
 
-    def add_followers(self, user_id: int, followers: dict):
+    def add_followers(self, user_id: int, followers: list):
         """
         Функция для добавления строки в базу данных
         user_id - пользователь, чьи подписчики добавляются в таблицу
-        followers - подписчики {user_id: {'username': username, 'is_private': 1,0}
+        followers - подписчики [{'user_id': user_id, username': username, 'is_private': 1,0}]
         """
+        followers_in_base = self.get_from_base('followers', col=False,
+                                               where=True, where_column={'main_user_user_id': user_id})
+
+        # Удобней оперировать простыми списками
+        cute_followers_in_base = []
+        for follower in followers_in_base:
+            cute_followers_in_base.append(follower[0])
+
+        cute_followers_new = []
+        for follower in followers:
+            cute_followers_new.append(str(user_id) + '_' + str(follower['user_id']))
+
+        # Находим список новых подписчиков
         new_followers = []
-        for f_user_id, info in followers.items():
-            self.add_user(f_user_id, info['username'], info['is_private'])
-            new_followers.append((str(user_id) + '_' + str(f_user_id), user_id, f_user_id, datetime.datetime.today()))
+        for follower in cute_followers_new:
+            if follower not in cute_followers_in_base:
+                new_followers.append(follower)
+
+        # Добавляем список новых подписчиков
+        new_followers_to_base = []
+        for follower in followers:
+            self.add_user(follower['user_id'], follower['username'], follower['is_private'])
+            if follower['user_id'] in new_followers:
+                new_followers_to_base.append((str(user_id) + '_' + str(follower['user_id']), user_id,
+                                              follower['user_id'], datetime.datetime.today(), 0, 0))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR IGNORE INTO 'followers' VALUES (?, ?, ?, ?);", new_followers)
+        c.executemany("INSERT OR IGNORE INTO 'followers' VALUES (?, ?, ?, ?, ?, ?);", new_followers_to_base)
         self.conn.commit()
         self.conn.close()
 
-    def add_followings(self, user_id: int, followings: dict):
+        # Находим список отписчиков
+        unfollowers = []
+        for follower in cute_followers_in_base:
+            if follower not in cute_followers_new:
+                unfollowers.append(follower)
+
+        # Добавляем заметку, что подписчики отписались
+        unfollowers_to_base = []
+        for follower in followers_in_base:
+            if follower[2] in unfollowers:
+                unfollowers_to_base.append((follower[0], follower[1].
+                                            follower[2], follower[3], 1, datetime.datetime.today()))
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR UPDATE INTO 'followers' VALUES (?, ?, ?, ?, ?, ?);", unfollowers_to_base)
+        self.conn.commit()
+        self.conn.close()
+
+    def add_followings(self, user_id: int, followings: list):
         """
         Функция для добавления строки в базу данных
         user_id - пользователь, чьи подписки добавляются в таблицу
-        followings - подписки {user_id: {'username': username, 'is_private': 1,0}
+        followings - подписки [{'user_id': user_id, 'username': username, 'is_private': 1,0}]
         """
+        followings_in_base = self.get_from_base('following', col=False,
+                                                where=False, where_column={'main_user_user_id': user_id})
+
+        # Удобней оперировать простыми списками
+        cute_followings_in_base = []
+        for following in followings_in_base:
+            cute_followings_in_base.append(following[0])
+
+        cute_followings_new = []
+        for following in followings:
+            cute_followings_new.append(str(user_id) + '_' + str(following['user_id']))
+
+        # Находим список новых подписчиков
         new_followings = []
-        for f_user_id, info in followings.items():
-            self.add_user(f_user_id, info['username'], info['is_private'])
-            new_followings.append((str(user_id) + '_' + str(f_user_id), user_id, f_user_id, datetime.datetime.today()))
+        for following in cute_followings_new:
+            if following not in cute_followings_in_base:
+                new_followings.append(following)
+
+        # Добавляем список новых подписчиков
+        new_followings_to_base = []
+        for following in followings:
+            self.add_user(following['user_id'], following['username'], following['is_private'])
+            if following['user_id'] in new_followings:
+                new_followings_to_base.append((str(user_id) + '_' + str(following['user_id']), user_id,
+                                               following['user_id'], datetime.datetime.today(), 0, 0))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR IGNORE INTO 'following' VALUES (?, ?, ?, ?);", new_followings)
+        c.executemany("INSERT OR IGNORE INTO 'following' VALUES (?, ?, ?, ?, ?, ?);", new_followings_to_base)
+        self.conn.commit()
+        self.conn.close()
+
+        # Находим список отписчиков
+        unfollowings = []
+        for following in cute_followings_in_base:
+            if following not in cute_followings_new:
+                unfollowings.append(following)
+
+        # Добавляем отметку, что подписчики отписались
+        unfollowings_to_base = []
+        for following in followings_in_base:
+            if following[2] in unfollowings:
+                unfollowings_to_base.append((following[0], following[1].
+                                             following[2], following[3], 1, datetime.datetime.today()))
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR UPDATE INTO 'following' VALUES (?, ?, ?, ?, ?, ?);", unfollowings_to_base)
         self.conn.commit()
         self.conn.close()
 
@@ -382,23 +475,148 @@ class BaseUser:
         date_like - дата лайка
         date_dislike - дата дизлайка
         """
-        columns = ['post_id', 'user_id', 'like_b', 'dislike_b', 'date_like', 'date_dislike']
-        values = [post_id, user_id, like_b, dislike_b, date_like, date_dislike]
+        like_id = str(post_id) + '_' + str(user_id)
+        columns = ['like_id', 'post_id', 'user_id', 'like_b', 'dislike_b', 'date_like', 'date_dislike']
+        values = [like_id, post_id, user_id, like_b, dislike_b, date_like, date_dislike]
         self.add_to_base('likes', columns, values)
 
-    def add_comment(self, post_id: str, user_id: int, comment: str):
+    def add_likes(self, post_id: str, user_id: int, likers: list):
+        """
+        Функция для добавления лайка в базу данных
+        post_id - id поста
+        user_id - id пользователя
+        like_b - признак действующего лайка
+        dislike_b - признак того, что лайк отлайкнут
+        date_like - дата лайка
+        date_dislike - дата дизлайка
+        likers - [{'user_id': user_id, 'username': username, 'is_private': True}]
+        """
+        # получить список лайков по данному посту
+        likers_base = self.get_from_base('likes', col=False,
+                                         where=True, where_column={'post_id': post_id})
+
+        # Оперировать удобней списками, поэтому делаем преобразование
+        cute_likers_base = []
+        for liker in likers_base:
+            cute_likers_base.append(liker[0])
+
+        cute_likers_new = []
+        for liker in likers:
+            cute_likers_new.append(str(post_id) + '_' + str(liker['user_id']))
+
+        # Находим список новых лайкеров
+        new_likers = []
+        for liker in cute_likers_new:
+            if liker not in cute_likers_base:
+                new_likers.append(liker)
+
+        # Добавляем список новых лайкеров
+        new_likers_to_base = []
+        for liker in likers:
+            like_id = str(post_id) + '_' + str(liker['user_id'])
+            if like_id in new_likers:
+                new_likers_to_base.append((like_id, post_id, user_id, 1, 0, datetime.datetime.today(), 0))
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR IGNORE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", new_likers_to_base)
+        self.conn.commit()
+        self.conn.close()
+
+        # Находим список отлайкнутых
+        unlikers = []
+        for liker in cute_likers_base:
+            if liker not in cute_likers_new:
+                unlikers.append(liker)
+
+        # Добавляем отметку, что убрали лайк
+        unlikers_to_base = []
+        for liker in likers_base:
+            if liker[0] in unlikers:
+                unlikers_to_base.append((liker[0], liker[1]. liker[2],
+                                         liker[3], 1, liker[5], datetime.datetime.today()))
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR UPDATE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", unlikers_to_base)
+        self.conn.commit()
+        self.conn.close()
+
+    def add_comment(self, post_id: str, user_id: int, comment: str,
+                    comment_add=datetime.datetime.today(), comment_remove=0, add=1, remove=0):
         """
         Функция для добавления коммента в базу данных
         post_id - id поста
         user_id - id пользователя
         comment - комментарий
         """
-        columns = ['post_id', 'user_id', 'comment']
-        values = [post_id, user_id, comment]
+        comment_hash = hashlib.sha1(str(comment).encode()).hexdigest()
+        comment_id = str(post_id) + '_' + str(user_id) + '_' + str(comment_hash)
+        columns = ['comment_id', 'post_id', 'user_id', 'comment', 'comment_add', 'comment_remove', 'add', 'remove']
+        values = [comment_id, post_id, user_id, comment, comment_add, comment_remove, add, remove]
         self.add_to_base('comments', columns, values)
 
+    def add_comments(self, post_id: str, user_id: int, comments: list):
+        """
+        Функция для добавления коммента в базу данных
+        post_id - id поста
+        user_id - id пользователя
+        comments - [{'user_id': user_id, 'post_id': post_id, 'comment_add': datetime, 'comment': comment}]
+        """
+        # получить список комменов по данному посту
+        comments_base = self.get_from_base('comments', col=False,
+                                           where=True, where_column={'post_id': post_id})
+
+        # Оперировать удобней списками, поэтому делаем преобразование
+        cute_comments_base = []
+        for comment in comments_base:
+            cute_comments_base.append(comment[0])
+
+        cute_comments_new = []
+        for comment in comments:
+            comment_hash = hashlib.sha1(str(comment['comment']).encode()).hexdigest()
+            comment_id = str(post_id) + '_' + str(user_id) + '_' + str(comment_hash)
+            cute_comments_new.append(comment_id)
+
+        # Находим список новых комментов
+        new_comments = []
+        for comment in cute_comments_new:
+            if comment not in cute_comments_base:
+                new_comments.append(comment)
+
+        # Добавляем список новых комментов
+        new_comments_to_base = []
+        for comment in comments:
+            comment_hash = hashlib.sha1(str(comment['comment']).encode()).hexdigest()
+            comment_id = str(post_id) + '_' + str(user_id) + '_' + str(comment_hash)
+            if comment_id in new_comments:
+                new_comments_to_base.append((comment_id, post_id, user_id,
+                                             comment['comment'], comment['comment_add'], 0, 1, 0))
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR IGNORE INTO 'comments' VALUES (?, ?, ?, ?, ?, ?, ?);", new_likers_to_base)
+        self.conn.commit()
+        self.conn.close()
+
+        # Находим список отлайкнутых
+        unlikers = []
+        for liker in cute_likers_base:
+            if liker not in cute_likers_new:
+                unlikers.append(liker)
+
+        # Добавляем отметку, что убрали лайк
+        unlikers_to_base = []
+        for liker in likers_base:
+            if liker[0] in unlikers:
+                unlikers_to_base.append((liker[0], liker[1].liker[2],
+                                         liker[3], 1, liker[5], datetime.datetime.today()))
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR UPDATE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", unlikers_to_base)
+        self.conn.commit()
+        self.conn.close()
+
     def add_user_statistic(self, user_id: int, ratio_fw_fr=0, mutual_per=0, adherence_per=0,
-                           like_per_post=0, likes=0, posts=0, likable=0):
+                           like_per_post=0, likes=0, posts=0, likable=0, fr=0, fw=0,
+                           un_fr=0, un_fw=0, fw_dynamic=0, fr_dynamic=0):
         """
         Функция для добавления коммента в базу данных
         user_id - id пользователя
@@ -411,6 +629,9 @@ class BaseUser:
         likable - лайкабельность
         """
         columns = ['user_id', 'ratio_fw_fr', 'mutual_per', 'adherence_per',
-                   'like_per_post', 'likes', 'posts', 'likable']
-        values = [user_id, ratio_fw_fr, mutual_per, adherence_per, like_per_post, likes, posts, likable]
+                   'like_per_post', 'likes', 'posts', 'likable', 'fr', 'fw',
+                   'un_fr', 'un_fw', 'fw_dynamic', 'fr_dynamic']
+        values = [user_id, ratio_fw_fr, mutual_per, adherence_per, like_per_post, likes, posts, likable, fr, fw,
+                  un_fr, un_fw, fw_dynamic, fr_dynamic]
         self.add_to_base('users_statistic', columns, values)
+
