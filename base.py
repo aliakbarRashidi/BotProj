@@ -65,7 +65,7 @@ class BaseUser:
             unfollow BOOLEAN,
             date_unfollower DATETIME,
             FOREIGN KEY (main_user_user_id) REFERENCES users (user_id)
-            ON DELETE CASCADE ON UPDATE NO ACTION
+            ON DELETE CASCADE ON UPDATE NO ACTION,
             FOREIGN KEY (follower_user_id) REFERENCES users (user_id)
             ON DELETE CASCADE ON UPDATE NO ACTION
         );
@@ -88,7 +88,7 @@ class BaseUser:
             unfollow BOOLEAN,
             date_unfollowing DATETIME,
             FOREIGN KEY (main_user_user_id) REFERENCES users (user_id)
-            ON DELETE CASCADE ON UPDATE NO ACTION
+            ON DELETE CASCADE ON UPDATE NO ACTION,
             FOREIGN KEY (following_user_id) REFERENCES users (user_id)
             ON DELETE CASCADE ON UPDATE NO ACTION
         );
@@ -159,8 +159,8 @@ class BaseUser:
              comment text,
              comment_add DATETIME DEFAULT 0,
              comment_remove DATETIME DEFAULT 0,
-             add BOOLEAN DEFAULT 1,
-             remove BOOLEAN DEFAULT 0,
+             add_c BOOLEAN DEFAULT 1,
+             remove_c BOOLEAN DEFAULT 0,
              FOREIGN KEY (post_id) REFERENCES posts (post_id)
              ON DELETE CASCADE ON UPDATE NO ACTION,
              FOREIGN KEY (user_id) REFERENCES users (user_id)
@@ -251,12 +251,11 @@ class BaseUser:
         for follower in cute_followers_new:
             if follower not in cute_followers_in_base:
                 new_followers.append(follower)
-
         # Добавляем список новых подписчиков
         new_followers_to_base = []
         for follower in followers:
             self.add_user(follower['user_id'], follower['username'], follower['is_private'])
-            if follower['user_id'] in new_followers:
+            if str(user_id) + '_' + str(follower['user_id']) in new_followers:
                 new_followers_to_base.append((str(user_id) + '_' + str(follower['user_id']), user_id,
                                               follower['user_id'], datetime.datetime.today(), 0, 0))
         self.conn = sqlite3.connect(self.basename)
@@ -279,7 +278,7 @@ class BaseUser:
                                             follower[2], follower[3], 1, datetime.datetime.today()))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR UPDATE INTO 'followers' VALUES (?, ?, ?, ?, ?, ?);", unfollowers_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'followers' VALUES (?, ?, ?, ?, ?, ?);", unfollowers_to_base)
         self.conn.commit()
         self.conn.close()
 
@@ -311,7 +310,7 @@ class BaseUser:
         new_followings_to_base = []
         for following in followings:
             self.add_user(following['user_id'], following['username'], following['is_private'])
-            if following['user_id'] in new_followings:
+            if str(user_id) + '_' + str(following['user_id']) in new_followings:
                 new_followings_to_base.append((str(user_id) + '_' + str(following['user_id']), user_id,
                                                following['user_id'], datetime.datetime.today(), 0, 0))
         self.conn = sqlite3.connect(self.basename)
@@ -334,7 +333,7 @@ class BaseUser:
                                              following[2], following[3], 1, datetime.datetime.today()))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR UPDATE INTO 'following' VALUES (?, ?, ?, ?, ?, ?);", unfollowings_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'following' VALUES (?, ?, ?, ?, ?, ?);", unfollowings_to_base)
         self.conn.commit()
         self.conn.close()
 
@@ -440,6 +439,10 @@ class BaseUser:
         fr - подписчики
         fw - последователи
         """
+        if is_private is True:
+            is_private = 1
+        else:
+            is_private = 0
         columns = ['user_id', 'username', 'is_private', 'fr', 'fw', 'old_fw']
         values = [user_id, username, is_private, fr, fw, old_fw]
         self.add_to_base('users', columns, values)
@@ -536,7 +539,7 @@ class BaseUser:
                                          liker[3], 1, liker[5], datetime.datetime.today()))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR UPDATE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", unlikers_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", unlikers_to_base)
         self.conn.commit()
         self.conn.close()
 
@@ -592,25 +595,25 @@ class BaseUser:
                                              comment['comment'], comment['comment_add'], 0, 1, 0))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR IGNORE INTO 'comments' VALUES (?, ?, ?, ?, ?, ?, ?);", new_likers_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'comments' VALUES (?, ?, ?, ?, ?, ?, ?);", new_comments_to_base)
         self.conn.commit()
         self.conn.close()
 
-        # Находим список отлайкнутых
-        unlikers = []
-        for liker in cute_likers_base:
-            if liker not in cute_likers_new:
-                unlikers.append(liker)
+        # Находим список откоментных
+        uncomments = []
+        for comment in cute_comments_base:
+            if comment not in cute_comments_new:
+                uncomments.append(comment)
 
-        # Добавляем отметку, что убрали лайк
-        unlikers_to_base = []
-        for liker in likers_base:
-            if liker[0] in unlikers:
-                unlikers_to_base.append((liker[0], liker[1].liker[2],
-                                         liker[3], 1, liker[5], datetime.datetime.today()))
+        # Добавляем отметку, что коммент удалили
+        uncomments_to_base = []
+        for comment in comments_base:
+            if comment[0] in comments:
+                uncomments_to_base.append((comment[0], comment[1].comment[2],
+                                           comment[3], comment[4], datetime.datetime.today(), 1, 1))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR UPDATE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", unlikers_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", uncomments_to_base)
         self.conn.commit()
         self.conn.close()
 
