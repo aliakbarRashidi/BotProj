@@ -131,14 +131,17 @@ class BaseUser:
         CREATE TABLE IF NOT EXISTS likes (
              like_id text PRIMARY KEY UNIQUE,
              post_id INTEGER,
-             user_id INTEGER,
+             main_user_id INTEGER,
+             like_user_id INTEGER,
              like_b BOOLEAN DEFAULT False,
              dislike_b BOOLEAN DEFAULT False,
              date_like DATETIME,
              date_dislike DATETIME,
              FOREIGN KEY (post_id) REFERENCES posts (post_id)
              ON DELETE CASCADE ON UPDATE NO ACTION,
-             FOREIGN KEY (user_id) REFERENCES users (user_id)
+             FOREIGN KEY (main_user_id) REFERENCES users (user_id)
+             ON DELETE CASCADE ON UPDATE NO ACTION,
+             FOREIGN KEY (like_user_id) REFERENCES users (user_id)
              ON DELETE CASCADE ON UPDATE NO ACTION
             );
         ''')
@@ -465,20 +468,24 @@ class BaseUser:
         values = [post_id, user_id, title, u_long, u_lat, p_long, p_lat, p_lock_name, has_liked, post_datetime]
         self.add_to_base('posts', columns, values)
 
-    def add_like(self, post_id: str, user_id: int, like_b=1, dislike_b=0, date_like=0, date_dislike=0):
+    def add_like(self, post_id: str, main_user_id: int, like_user_id: int, like_b=1, dislike_b=0, date_like=0, date_dislike=0):
         """
         Функция для добавления лайка в базу данных
         like_id - id лайка
         post_id - id поста
         user_id - id пользователя
+        main_user_id - id пользователя-владельца поста
+        like_user_id - id пользователя, который поставил лайк
         like_b - признак действующего лайка
         dislike_b - признак того, что лайк отлайкнут
         date_like - дата лайка
         date_dislike - дата дизлайка
         """
-        like_id = str(post_id) + '_' + str(user_id)
-        columns = ['like_id', 'post_id', 'user_id', 'like_b', 'dislike_b', 'date_like', 'date_dislike']
-        values = [like_id, post_id, user_id, like_b, dislike_b, date_like, date_dislike]
+        like_id = str(post_id) + '_' + str(main_user_id)
+        columns = ['like_id', 'post_id', 'main_user_id', 'like_user_id',
+                   'like_b', 'dislike_b', 'date_like', 'date_dislike']
+        values = [like_id, post_id, main_user_id, like_user_id,
+                  like_b, dislike_b, date_like, date_dislike]
         self.add_to_base('likes', columns, values)
 
     def add_likes(self, post_id: str, user_id: int, likers: list):
@@ -495,7 +502,7 @@ class BaseUser:
         # получить список лайков по данному посту
         likers_base = self.get_from_base('likes', col=False,
                                          where=True, where_column={'post_id': post_id})
-
+        self.add_users(likers)
         # Оперировать удобней списками, поэтому делаем преобразование
         cute_likers_base = []
         for liker in likers_base:
@@ -516,10 +523,11 @@ class BaseUser:
         for liker in likers:
             like_id = str(post_id) + '_' + str(liker['user_id'])
             if like_id in new_likers:
-                new_likers_to_base.append((like_id, post_id, user_id, 1, 0, datetime.datetime.today(), 0))
+                new_likers_to_base.append((like_id, post_id, user_id, liker['user_id'],
+                                           1, 0, datetime.datetime.today(), 0))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR IGNORE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", new_likers_to_base)
+        c.executemany("INSERT OR IGNORE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?, ?);", new_likers_to_base)
         self.conn.commit()
         self.conn.close()
 
@@ -533,11 +541,11 @@ class BaseUser:
         unlikers_to_base = []
         for liker in likers_base:
             if liker[0] in unlikers:
-                unlikers_to_base.append((liker[0], liker[1]. liker[2],
-                                         liker[3], 1, liker[5], datetime.datetime.today()))
+                unlikers_to_base.append((liker[0], liker[1], liker[2], liker[3],
+                                         liker[4], 1, liker[6], datetime.datetime.today()))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR REPLACE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", unlikers_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?, ?);", unlikers_to_base)
         self.conn.commit()
         self.conn.close()
 

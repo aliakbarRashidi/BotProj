@@ -5,6 +5,7 @@ loc_per = 598476186
 user = '*'
 password = '*'
 
+
 class Insta:
 
     def __init__(self, user, password):
