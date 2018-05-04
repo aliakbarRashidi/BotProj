@@ -698,11 +698,9 @@ class BaseUser:
         cute_users_in_base = []
         for user in users_in_base:
             cute_users_in_base.append(user[0])
-
         cute_users_new = []
         for user in users:
             cute_users_new.append(user['user_id'])
-
         # Находим список новых пользователей
         new_users = []
         for user in cute_users_new:
@@ -712,8 +710,9 @@ class BaseUser:
         # Добавляем список новых пользователей
         new_users_to_base = []
         for user in users:
-            if str(user['user_id']) in new_users:
+            if user['user_id'] in new_users:
                 new_users_to_base.append((user['user_id'], user['username'], user['is_private'], 0, 0, 0))
+        print()
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
         c.executemany("INSERT OR IGNORE INTO 'users' VALUES (?, ?, ?, ?, ?, ?);", new_users_to_base)

@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="19b65548-ad3a-470e-8127-d1b43ecb2953" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/syrnikov_pavel.db" afterPath="$PROJECT_DIR$/syrnikov_pavel.db" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/InstaStatistick.py" afterPath="$PROJECT_DIR$/InstaStatistick.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/base.py" afterPath="$PROJECT_DIR$/base.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/testStat.py" afterPath="$PROJECT_DIR$/testStat.py" />
     </list>
@@ -31,8 +29,8 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="666" column="0" lean-forward="false" selection-start-line="666" selection-start-column="0" selection-end-line="666" selection-end-column="0" />
+            <state relative-caret-position="191">
+              <caret line="638" column="10" lean-forward="true" selection-start-line="638" selection-start-column="10" selection-end-line="638" selection-end-column="10" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
                 <element signature="e#162#661#0" expanded="false" />
@@ -57,30 +55,31 @@
                 <element signature="e#21616#22197#0" expanded="false" />
                 <element signature="e#22279#24926#0" expanded="false" />
                 <element signature="e#25188#26080#0" expanded="false" />
-                <element signature="e#28414#29676#0" expanded="false" />
-                <marker date="1525426398558" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
-                <marker date="1525426398558" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
-                <marker date="1525426398558" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
-                <marker date="1525426398558" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
-                <marker date="1525426398558" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
-                <marker date="1525426398558" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
-                <marker date="1525426398558" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
-                <marker date="1525426398558" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
-                <marker date="1525426398558" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
-                <marker date="1525426398558" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
-                <marker date="1525426398558" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
-                <marker date="1525426398558" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
-                <marker date="1525426398558" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
-                <marker date="1525426398558" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
-                <marker date="1525426398558" expanded="true" signature="14686:14698" ph="DELETE FROM " />
-                <marker date="1525426398558" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
-                <marker date="1525426398558" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
-                <marker date="1525426398558" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
-                <marker date="1525426398558" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
-                <marker date="1525426398558" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
-                <marker date="1525426398558" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
-                <marker date="1525426398558" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
-                <marker date="1525426398558" expanded="true" signature="29546:29601" ph="INSERT OR IG... posts" />
+                <element signature="e#26142#28366#0" expanded="false" />
+                <element signature="e#28414#29685#0" expanded="false" />
+                <marker date="1525430808092" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
+                <marker date="1525430808092" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
+                <marker date="1525430808092" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
+                <marker date="1525430808092" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
+                <marker date="1525430808092" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
+                <marker date="1525430808092" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
+                <marker date="1525430808092" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
+                <marker date="1525430808092" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
+                <marker date="1525430808092" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
+                <marker date="1525430808092" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
+                <marker date="1525430808092" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
+                <marker date="1525430808092" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
+                <marker date="1525430808092" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
+                <marker date="1525430808092" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
+                <marker date="1525430808092" expanded="true" signature="14686:14698" ph="DELETE FROM " />
+                <marker date="1525430808092" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
+                <marker date="1525430808092" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
+                <marker date="1525430808092" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
+                <marker date="1525430808092" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
+                <marker date="1525430808092" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
+                <marker date="1525430808092" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
+                <marker date="1525430808092" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
+                <marker date="1525430808092" expanded="true" signature="29555:29610" ph="INSERT OR IG... posts" />
               </folding>
             </state>
           </provider>
@@ -89,12 +88,10 @@
       <file leaf-file-name="InstaStatistick.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InstaStatistick.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="247" column="47" lean-forward="false" selection-start-line="247" selection-start-column="47" selection-end-line="247" selection-end-column="47" />
+            <state relative-caret-position="120">
+              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
-                <element signature="e#134#235#0" expanded="false" />
-                <element signature="e#272#447#0" expanded="false" />
                 <element signature="e#501#1519#0" expanded="false" />
                 <element signature="e#1573#2274#0" expanded="false" />
                 <element signature="e#2319#2836#0" expanded="false" />
@@ -108,23 +105,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InstagramAPI.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/InstagramAPI.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="844" column="0" lean-forward="false" selection-start-line="844" selection-start-column="0" selection-end-line="844" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="testStat.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testStat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            <state relative-caret-position="242">
+              <caret line="105" column="27" lean-forward="true" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
+                <element signature="e#174#345#0" expanded="false" />
+                <element signature="e#387#2769#0" expanded="false" />
+                <element signature="e#2812#4605#0" expanded="false" />
+                <element signature="e#4643#6163#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -158,8 +149,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/base.py" />
         <option value="$PROJECT_DIR$/InstaStatistick.py" />
+        <option value="$PROJECT_DIR$/base.py" />
         <option value="$PROJECT_DIR$/testStat.py" />
       </list>
     </option>
@@ -191,7 +182,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,6 +193,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -249,13 +240,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1913767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19440243" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32840723" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32840723" sideWeight="0.49707174" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -286,6 +278,113 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/base.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="666" column="0" lean-forward="false" selection-start-line="666" selection-start-column="0" selection-end-line="666" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#162#661#0" expanded="false" />
+            <element signature="e#698#831#0" expanded="false" />
+            <element signature="e#875#1391#0" expanded="false" />
+            <element signature="e#1439#2192#0" expanded="false" />
+            <element signature="e#2240#2998#0" expanded="false" />
+            <element signature="e#3042#3804#0" expanded="false" />
+            <element signature="e#3848#4625#0" expanded="false" />
+            <element signature="e#4672#5508#0" expanded="false" />
+            <element signature="e#5562#6512#0" expanded="false" />
+            <element signature="e#6595#7627#0" expanded="false" />
+            <element signature="e#7697#10124#0" expanded="false" />
+            <element signature="e#10196#12671#0" expanded="false" />
+            <element signature="e#12772#13879#0" expanded="false" />
+            <element signature="e#13967#14900#0" expanded="false" />
+            <element signature="e#15007#16574#0" expanded="false" />
+            <element signature="e#16673#17205#0" expanded="false" />
+            <element signature="e#17378#18269#0" expanded="false" />
+            <element signature="e#18383#18998#0" expanded="false" />
+            <element signature="e#19075#21443#0" expanded="false" />
+            <element signature="e#21616#22197#0" expanded="false" />
+            <element signature="e#22279#24926#0" expanded="false" />
+            <element signature="e#25188#26080#0" expanded="false" />
+            <element signature="e#26142#28366#0" expanded="false" />
+            <element signature="e#28414#29685#0" expanded="false" />
+            <marker date="1525430808092" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
+            <marker date="1525430808092" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
+            <marker date="1525430808092" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
+            <marker date="1525430808092" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
+            <marker date="1525430808092" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
+            <marker date="1525430808092" expanded="true" signature="14686:14698" ph="DELETE FROM " />
+            <marker date="1525430808092" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
+            <marker date="1525430808092" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
+            <marker date="1525430808092" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
+            <marker date="1525430808092" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="29555:29610" ph="INSERT OR IG... posts" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstaStatistick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="247" column="47" lean-forward="false" selection-start-line="247" selection-start-column="47" selection-end-line="247" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#501#1519#0" expanded="false" />
+            <element signature="e#1573#2274#0" expanded="false" />
+            <element signature="e#2319#2836#0" expanded="false" />
+            <element signature="e#3381#5507#0" expanded="false" />
+            <element signature="e#5573#6334#0" expanded="false" />
+            <element signature="e#6404#7128#0" expanded="false" />
+            <element signature="e#7194#7601#0" expanded="false" />
+            <element signature="e#7657#8022#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/InstagramAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="14059">
+          <caret line="844" column="0" lean-forward="false" selection-start-line="844" selection-start-column="0" selection-end-line="844" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="867">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="55" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testStat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#174#345#0" expanded="false" />
+            <element signature="e#387#2769#0" expanded="false" />
+            <element signature="e#2812#4605#0" expanded="false" />
+            <element signature="e#4643#6163#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base.py">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
           <caret line="617" column="72" lean-forward="false" selection-start-line="615" selection-start-column="8" selection-end-line="617" selection-end-column="72" />
           <folding>
@@ -312,30 +411,31 @@
             <element signature="e#21616#22197#0" expanded="false" />
             <element signature="e#22279#24926#0" expanded="false" />
             <element signature="e#25188#26080#0" expanded="false" />
-            <element signature="e#28414#29676#0" expanded="false" />
-            <marker date="1525426398558" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
-            <marker date="1525426398558" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
-            <marker date="1525426398558" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
-            <marker date="1525426398558" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
-            <marker date="1525426398558" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
-            <marker date="1525426398558" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
-            <marker date="1525426398558" expanded="true" signature="14686:14698" ph="DELETE FROM " />
-            <marker date="1525426398558" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
-            <marker date="1525426398558" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
-            <marker date="1525426398558" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
-            <marker date="1525426398558" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
-            <marker date="1525426398558" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
-            <marker date="1525426398558" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
-            <marker date="1525426398558" expanded="true" signature="29546:29601" ph="INSERT OR IG... posts" />
+            <element signature="e#26142#28366#0" expanded="false" />
+            <element signature="e#28414#29685#0" expanded="false" />
+            <marker date="1525430808092" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
+            <marker date="1525430808092" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
+            <marker date="1525430808092" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
+            <marker date="1525430808092" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
+            <marker date="1525430808092" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
+            <marker date="1525430808092" expanded="true" signature="14686:14698" ph="DELETE FROM " />
+            <marker date="1525430808092" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
+            <marker date="1525430808092" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
+            <marker date="1525430808092" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
+            <marker date="1525430808092" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="29555:29610" ph="INSERT OR IG... posts" />
           </folding>
         </state>
       </provider>
@@ -346,8 +446,6 @@
           <caret line="221" column="33" lean-forward="false" selection-start-line="221" selection-start-column="8" selection-end-line="221" selection-end-column="33" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#134#235#0" expanded="false" />
-            <element signature="e#272#447#0" expanded="false" />
             <element signature="e#501#1519#0" expanded="false" />
             <element signature="e#1573#2274#0" expanded="false" />
             <element signature="e#2319#2836#0" expanded="false" />
@@ -376,6 +474,10 @@
           <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#174#345#0" expanded="false" />
+            <element signature="e#387#2769#0" expanded="false" />
+            <element signature="e#2812#4605#0" expanded="false" />
+            <element signature="e#4643#6163#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -408,30 +510,31 @@
             <element signature="e#21616#22197#0" expanded="false" />
             <element signature="e#22279#24926#0" expanded="false" />
             <element signature="e#25188#26080#0" expanded="false" />
-            <element signature="e#28414#29676#0" expanded="false" />
-            <marker date="1525426398558" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
-            <marker date="1525426398558" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
-            <marker date="1525426398558" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
-            <marker date="1525426398558" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
-            <marker date="1525426398558" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
-            <marker date="1525426398558" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
-            <marker date="1525426398558" expanded="true" signature="14686:14698" ph="DELETE FROM " />
-            <marker date="1525426398558" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
-            <marker date="1525426398558" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
-            <marker date="1525426398558" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
-            <marker date="1525426398558" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
-            <marker date="1525426398558" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
-            <marker date="1525426398558" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
-            <marker date="1525426398558" expanded="true" signature="29546:29601" ph="INSERT OR IG... posts" />
+            <element signature="e#26142#28366#0" expanded="false" />
+            <element signature="e#28414#29685#0" expanded="false" />
+            <marker date="1525430808092" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
+            <marker date="1525430808092" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
+            <marker date="1525430808092" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
+            <marker date="1525430808092" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
+            <marker date="1525430808092" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
+            <marker date="1525430808092" expanded="true" signature="14686:14698" ph="DELETE FROM " />
+            <marker date="1525430808092" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
+            <marker date="1525430808092" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
+            <marker date="1525430808092" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
+            <marker date="1525430808092" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="29555:29610" ph="INSERT OR IG... posts" />
           </folding>
         </state>
       </provider>
@@ -442,8 +545,6 @@
           <caret line="57" column="7" lean-forward="true" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#134#235#0" expanded="false" />
-            <element signature="e#272#447#0" expanded="false" />
             <element signature="e#501#1519#0" expanded="false" />
             <element signature="e#1573#2274#0" expanded="false" />
             <element signature="e#2319#2836#0" expanded="false" />
@@ -482,16 +583,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/InstagramAPI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="844" column="0" lean-forward="false" selection-start-line="844" selection-start-column="0" selection-end-line="844" selection-end-column="0" />
+        <state relative-caret-position="111">
+          <caret line="590" column="0" lean-forward="false" selection-start-line="590" selection-start-column="0" selection-end-line="590" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstaStatistick.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#501#1519#0" expanded="false" />
+            <element signature="e#1573#2274#0" expanded="false" />
+            <element signature="e#2319#2836#0" expanded="false" />
+            <element signature="e#3381#5507#0" expanded="false" />
+            <element signature="e#5573#6334#0" expanded="false" />
+            <element signature="e#6404#7128#0" expanded="false" />
+            <element signature="e#7194#7601#0" expanded="false" />
+            <element signature="e#7657#8022#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="666" column="0" lean-forward="false" selection-start-line="666" selection-start-column="0" selection-end-line="666" selection-end-column="0" />
+        <state relative-caret-position="191">
+          <caret line="638" column="10" lean-forward="true" selection-start-line="638" selection-start-column="10" selection-end-line="638" selection-end-column="10" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
             <element signature="e#162#661#0" expanded="false" />
@@ -516,60 +635,45 @@
             <element signature="e#21616#22197#0" expanded="false" />
             <element signature="e#22279#24926#0" expanded="false" />
             <element signature="e#25188#26080#0" expanded="false" />
-            <element signature="e#28414#29676#0" expanded="false" />
-            <marker date="1525426398558" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
-            <marker date="1525426398558" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
-            <marker date="1525426398558" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
-            <marker date="1525426398558" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
-            <marker date="1525426398558" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
-            <marker date="1525426398558" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
-            <marker date="1525426398558" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
-            <marker date="1525426398558" expanded="true" signature="14686:14698" ph="DELETE FROM " />
-            <marker date="1525426398558" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
-            <marker date="1525426398558" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
-            <marker date="1525426398558" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
-            <marker date="1525426398558" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
-            <marker date="1525426398558" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
-            <marker date="1525426398558" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
-            <marker date="1525426398558" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
-            <marker date="1525426398558" expanded="true" signature="29546:29601" ph="INSERT OR IG... posts" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/InstaStatistick.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="247" column="47" lean-forward="false" selection-start-line="247" selection-start-column="47" selection-end-line="247" selection-end-column="47" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#134#235#0" expanded="false" />
-            <element signature="e#272#447#0" expanded="false" />
-            <element signature="e#501#1519#0" expanded="false" />
-            <element signature="e#1573#2274#0" expanded="false" />
-            <element signature="e#2319#2836#0" expanded="false" />
-            <element signature="e#3381#5507#0" expanded="false" />
-            <element signature="e#5573#6334#0" expanded="false" />
-            <element signature="e#6404#7128#0" expanded="false" />
-            <element signature="e#7194#7601#0" expanded="false" />
-            <element signature="e#7657#8022#0" expanded="false" />
+            <element signature="e#26142#28366#0" expanded="false" />
+            <element signature="e#28414#29685#0" expanded="false" />
+            <marker date="1525430808092" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
+            <marker date="1525430808092" expanded="true" signature="1614:2125" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="2415:2931" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="3213:3737" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4019:4558" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="4846:5441" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="5743:6445" ph="CREATE TABLE... IF" />
+            <marker date="1525430808092" expanded="true" signature="9191:9250" ph="INSERT OR IG... followers" />
+            <marker date="1525430808092" expanded="true" signature="9987:10047" ph="INSERT OR RE... followers" />
+            <marker date="1525430808092" expanded="true" signature="10004:10047" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="11718:11777" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="12533:12593" ph="INSERT OR RE... following" />
+            <marker date="1525430808092" expanded="true" signature="12550:12593" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="13621:13646" ph="UPDATE missi... " />
+            <marker date="1525430808092" expanded="true" signature="14686:14698" ph="DELETE FROM " />
+            <marker date="1525430808092" expanded="true" signature="16313:16329" ph="SELECT missi... missing_value" />
+            <marker date="1525430808092" expanded="true" signature="20577:20635" ph="INSERT OR IG... likes" />
+            <marker date="1525430808092" expanded="true" signature="21310:21369" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24010:24072" ph="INSERT OR RE... comments" />
+            <marker date="1525430808092" expanded="true" signature="24791:24850" ph="INSERT OR RE... likes" />
+            <marker date="1525430808092" expanded="true" signature="24808:24850" ph="UPDATE INTO " />
+            <marker date="1525430808092" expanded="true" signature="28224:28291" ph="INSERT OR IG... following" />
+            <marker date="1525430808092" expanded="true" signature="29555:29610" ph="INSERT OR IG... posts" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testStat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="242">
+          <caret line="105" column="27" lean-forward="true" selection-start-line="105" selection-start-column="27" selection-end-line="105" selection-end-column="27" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#174#345#0" expanded="false" />
+            <element signature="e#387#2769#0" expanded="false" />
+            <element signature="e#2812#4605#0" expanded="false" />
+            <element signature="e#4643#6163#0" expanded="false" />
           </folding>
         </state>
       </provider>
