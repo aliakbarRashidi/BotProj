@@ -104,7 +104,7 @@ class BaseUser:
         c = self.conn.cursor()
         c.execute('''
         CREATE TABLE IF NOT EXISTS posts (
-             post_id text,
+             post_id text PRIMARY KEY,
              user_id INTEGER,
              title text,
              u_long REAL DEFAULT 0,
@@ -236,7 +236,7 @@ class BaseUser:
         """
         followers_in_base = self.get_from_base('followers', col=False,
                                                where=True, where_column={'main_user_user_id': user_id})
-
+        self.add_users(followers)
         # Удобней оперировать простыми списками
         cute_followers_in_base = []
         for follower in followers_in_base:
@@ -254,7 +254,6 @@ class BaseUser:
         # Добавляем список новых подписчиков
         new_followers_to_base = []
         for follower in followers:
-            self.add_user(follower['user_id'], follower['username'], follower['is_private'])
             if str(user_id) + '_' + str(follower['user_id']) in new_followers:
                 new_followers_to_base.append((str(user_id) + '_' + str(follower['user_id']), user_id,
                                               follower['user_id'], datetime.datetime.today(), 0, 0))
@@ -289,8 +288,8 @@ class BaseUser:
         followings - подписки [{'user_id': user_id, 'username': username, 'is_private': 1,0}]
         """
         followings_in_base = self.get_from_base('following', col=False,
-                                                where=False, where_column={'main_user_user_id': user_id})
-
+                                                where=True, where_column={'main_user_user_id': user_id})
+        self.add_users(followings)
         # Удобней оперировать простыми списками
         cute_followings_in_base = []
         for following in followings_in_base:
@@ -309,7 +308,6 @@ class BaseUser:
         # Добавляем список новых подписчиков
         new_followings_to_base = []
         for following in followings:
-            self.add_user(following['user_id'], following['username'], following['is_private'])
             if str(user_id) + '_' + str(following['user_id']) in new_followings:
                 new_followings_to_base.append((str(user_id) + '_' + str(following['user_id']), user_id,
                                                following['user_id'], datetime.datetime.today(), 0, 0))
@@ -637,4 +635,88 @@ class BaseUser:
         values = [user_id, ratio_fw_fr, mutual_per, adherence_per, like_per_post, likes, posts, likable, fr, fw,
                   un_fr, un_fw, fw_dynamic, fr_dynamic]
         self.add_to_base('users_statistic', columns, values)
+
+    def add_posts(self, user_id: int, posts: list):
+        """
+        Функция для добавления строки в базу данных
+        user_id - пользователь, чьи подписки добавляются в таблицу
+        posts - подписки [{ 'post_id': post_id,
+                            'like_count': like_count,
+                            'comment_count': comment_count,
+                            'filter_type': filter_type,
+                            'has_liked': has_liked,
+                            'has_more_comments': has_more_comments,
+                            'post_lng': post_lng,
+                            'post_lat': post_lat,
+                            'add_loc_lng': add_loc_lng,
+                            'add_loc_lat': add_loc_lat,
+                            'add_loc_name': add_loc_name,
+                            'date_post': date_post,
+                            'likers': likers}]
+        """
+        posts_in_base = self.get_from_base('posts', col=False,
+                                           where=True, where_column={'user_id': user_id})
+
+        # Удобней оперировать простыми списками
+        cute_posts_in_base = []
+        for post in posts_in_base:
+            cute_posts_in_base.append(post[0])
+
+        cute_posts_new = []
+        for post in posts:
+            cute_posts_new.append(post['post_id'])
+
+        # Находим список новых постов
+        new_posts = []
+        for post in cute_posts_new:
+            if post not in cute_posts_in_base:
+                new_posts.append(post)
+
+        # Добавляем список новых постов
+        new_posts_to_base = []
+        for post in posts:
+            if str(post['post_id']) in new_posts:
+                new_posts_to_base.append((post['post_id'], user_id, post['title'], post['post_lng'], post['post_lat'],
+                                          post['add_loc_lng'], post['add_loc_lat'], post['add_loc_name'],
+                                          post['has_liked'], post['date_post']))
+                self.add_likes(post['post_id'], user_id, post['likers'])
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR IGNORE INTO 'posts' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", new_posts_to_base)
+        self.conn.commit()
+        self.conn.close()
+
+    def add_users(self, users: list):
+        """
+        Функция для добавления строки в базу данных
+        user_id - пользователь, чьи подписки добавляются в таблицу
+        users - пользователи [{'user_id': user_id, username': username, 'is_private': 1,0}]
+        """
+        users_in_base = self.get_from_base('users', col=False, where=False)
+
+        # Удобней оперировать простыми списками
+        cute_users_in_base = []
+        for user in users_in_base:
+            cute_users_in_base.append(user[0])
+
+        cute_users_new = []
+        for user in users:
+            cute_users_new.append(user['user_id'])
+
+        # Находим список новых пользователей
+        new_users = []
+        for user in cute_users_new:
+            if user not in cute_users_in_base:
+                new_users.append(user)
+
+        # Добавляем список новых пользователей
+        new_users_to_base = []
+        for user in users:
+            if str(user['user_id']) in new_users:
+                new_users_to_base.append((user['user_id'], user['username'], user['is_private'], 0, 0, 0))
+        self.conn = sqlite3.connect(self.basename)
+        c = self.conn.cursor()
+        c.executemany("INSERT OR IGNORE INTO 'users' VALUES (?, ?, ?, ?, ?, ?);", new_users_to_base)
+        self.conn.commit()
+        self.conn.close()
 

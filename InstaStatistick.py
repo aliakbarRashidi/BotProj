@@ -96,7 +96,7 @@ class InstaStat:
         next_max_id = ''
         while sucsess:
             _ = self.api.getUserFeed(user_id, maxid=next_max_id)
-            user_posts.extend(self.api.LastJson.get('items'))
+            user_posts.extend(self.api.LastJson.get('items', ''))
             next_max_id = self.api.LastJson.get('next_max_id', '')
             if next_max_id == '':
                 sucsess = False
@@ -114,6 +114,10 @@ class InstaStat:
         filter_type = post['filter_type']
         has_liked = post['has_liked']
         has_more_comments = post['has_more_comments']
+        if post['caption'] is not None:
+            text_post = post['caption']['text']
+        else:
+            text_post = ''
         try:
             date_post = datetime.datetime.fromtimestamp(int(post['device_timestamp'] / 1000000)).strftime(
                 '%Y-%m-%d %H:%M:%S')
@@ -156,7 +160,8 @@ class InstaStat:
             'add_loc_lat': add_loc_lat,
             'add_loc_name': add_loc_name,
             'date_post': date_post,
-            'likers': likers
+            'likers': likers,
+            'title':text_post
         }
         return answer
 
@@ -172,7 +177,10 @@ class InstaStat:
         # соотношение последователей с подписчиками
         # если коэффициент больше 1, то человек имеет больше подписок, чем подписчиков
         # скорее всего такой человек вероятнее всего подпишется в ответ
-        ratio_fw_fr = round(len(follws) / len(follrs), 2)
+        try:
+            ratio_fw_fr = round(len(follws) / len(follrs), 2)
+        except ZeroDivisionError:
+            ratio_fw_fr = 0
         # процент взаимных подписок
         # чем больше коэффициент, тем вероятнее взаимная подписка
         mutual_per = round(mutual / len(follrs), 2)
@@ -234,6 +242,7 @@ class InstaStat:
         followings = self.get_total_following(user_id)
         posts = self.get_user_posts(user_id)
         follrs, follws, stat_post = self.create_data(followers, followings, posts)
+
         ratio_fw_fr, mutual_per = self.get_s_w_stat(follrs, follws)
         adherence_per, like_per_post, n_likes, n_posts = self.get_like_stat(stat_post, follrs)
-        return followers, followings, posts, ratio_fw_fr, mutual_per, adherence_per, like_per_post, n_likes, n_posts
+        return followers, followings, stat_post, ratio_fw_fr, mutual_per, adherence_per, like_per_post, n_likes, n_posts
