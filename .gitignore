@@ -1,5 +1,6 @@
 *.pyc
 *~
+*.db
 __pycache__
 myvenv
 .DS_Store

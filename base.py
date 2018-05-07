@@ -107,6 +107,7 @@ class BaseUser:
              post_id text PRIMARY KEY,
              user_id INTEGER,
              title text,
+             filter_type INTEGER DEFAULT 0,
              u_long REAL DEFAULT 0,
              u_lat REAL DEFAULT 0,
              p_long REAL DEFAULT 0,
@@ -156,8 +157,8 @@ class BaseUser:
         c = self.conn.cursor()
         c.execute('''
         CREATE TABLE IF NOT EXISTS comments (
-             comment_id text PRIMARY KEY NOT NULL UNIQUE,
-             post_id INTEGER,
+             comment_id INTEGER PRIMARY KEY NOT NULL UNIQUE,
+             post_id text,
              user_id INTEGER,
              comment text,
              comment_add DATETIME DEFAULT 0,
@@ -568,7 +569,8 @@ class BaseUser:
         Функция для добавления коммента в базу данных
         post_id - id поста
         user_id - id пользователя
-        comments - [{'user_id': user_id, 'post_id': post_id, 'comment_add': datetime, 'comment': comment}]
+        comments - [{'comment_id': comment_id, 'user_id': user_id, 'post_id': post_id, 'comment_add': datetime,
+        'comment': text}]
         """
         # получить список комменов по данному посту
         comments_base = self.get_from_base('comments', col=False,
@@ -581,8 +583,7 @@ class BaseUser:
 
         cute_comments_new = []
         for comment in comments:
-            comment_hash = hashlib.sha1(str(comment['comment']).encode()).hexdigest()
-            comment_id = str(post_id) + '_' + str(user_id) + '_' + str(comment_hash)
+            comment_id = comment['comment_id']
             cute_comments_new.append(comment_id)
 
         # Находим список новых комментов
@@ -594,14 +595,13 @@ class BaseUser:
         # Добавляем список новых комментов
         new_comments_to_base = []
         for comment in comments:
-            comment_hash = hashlib.sha1(str(comment['comment']).encode()).hexdigest()
-            comment_id = str(post_id) + '_' + str(user_id) + '_' + str(comment_hash)
+            comment_id = comment['comment_id']
             if comment_id in new_comments:
                 new_comments_to_base.append((comment_id, post_id, user_id,
-                                             comment['comment'], comment['comment_add'], 0, 1, 0))
+                                             comment['text'], comment['comment_add'], 0, 1, 0))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR REPLACE INTO 'comments' VALUES (?, ?, ?, ?, ?, ?, ?);", new_comments_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'comments' VALUES (?, ?, ?, ?, ?, ?, ?, ?);", new_comments_to_base)
         self.conn.commit()
         self.conn.close()
 
@@ -614,12 +614,12 @@ class BaseUser:
         # Добавляем отметку, что коммент удалили
         uncomments_to_base = []
         for comment in comments_base:
-            if comment[0] in comments:
+            if comment[0] in uncomments:
                 uncomments_to_base.append((comment[0], comment[1].comment[2],
                                            comment[3], comment[4], datetime.datetime.today(), 1, 1))
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR REPLACE INTO 'likes' VALUES (?, ?, ?, ?, ?, ?, ?);", uncomments_to_base)
+        c.executemany("INSERT OR REPLACE INTO 'comments' VALUES (?, ?, ?, ?, ?, ?, ?, ?);", uncomments_to_base)
         self.conn.commit()
         self.conn.close()
 
@@ -684,13 +684,15 @@ class BaseUser:
         new_posts_to_base = []
         for post in posts:
             if str(post['post_id']) in new_posts:
-                new_posts_to_base.append((post['post_id'], user_id, post['title'], post['post_lng'], post['post_lat'],
+                new_posts_to_base.append((post['post_id'], user_id, post['title'], post['filter_type'],
+                                          post['post_lng'], post['post_lat'],
                                           post['add_loc_lng'], post['add_loc_lat'], post['add_loc_name'],
                                           post['has_liked'], post['date_post']))
                 self.add_likes(post['post_id'], user_id, post['likers'])
+                self.add_comments(post['post_id'], user_id, post['comments'])
         self.conn = sqlite3.connect(self.basename)
         c = self.conn.cursor()
-        c.executemany("INSERT OR IGNORE INTO 'posts' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", new_posts_to_base)
+        c.executemany("INSERT OR IGNORE INTO 'posts' VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", new_posts_to_base)
         self.conn.commit()
         self.conn.close()
 

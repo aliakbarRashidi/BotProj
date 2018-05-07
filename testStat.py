@@ -2,8 +2,8 @@ from base import BaseUser
 from InstaStatistick import InstaStat
 
 loc_per = 598476186
-user = '*'
-password = '*'
+user = 'syrnikov_pavel'
+password = 'Nastya26042015'
 
 
 class Insta:

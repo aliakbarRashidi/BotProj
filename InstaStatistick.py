@@ -1,7 +1,7 @@
 from InstagramAPI import InstagramAPI
 import datetime
 import time
-
+import json
 
 class InstaStat:
 
@@ -56,9 +56,15 @@ class InstaStat:
             # first iteration hack
             if next_max_id is True:
                 next_max_id = ''
-            _ = self.api.getUserFollowings(user_id, maxid=next_max_id)
-            following.extend(self.api.LastJson.get('users', []))
-            next_max_id = self.api.LastJson.get('next_max_id', '')
+            try:
+                _ = self.api.getUserFollowings(user_id, maxid=next_max_id)
+                following.extend(self.api.LastJson.get('users', []))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
+            except json.decoder.JSONDecodeError:
+                time.sleep(1)
+                _ = self.api.getUserFollowings(user_id, maxid=next_max_id)
+                following.extend(self.api.LastJson.get('users', []))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
         true_following = []
         for user in following:
             true_following.append({'user_id': user['pk'], 'username': user['username'],
@@ -86,6 +92,39 @@ class InstaStat:
 
         return likers
 
+    def get_comments(self, post_id):
+        """
+        Возвращает список комментариев к посту
+        :param post_id: уникальное значение поста
+        :return: список комментариев к посту
+        """
+        answer = {}
+        sucsess = True
+        while sucsess:
+            _ = self.api.getMediaComments(post_id)
+            answer = self.api.LastJson
+            if answer['status'] == 'ok':
+                sucsess = False
+
+        comments = []
+        coms = answer['comments']
+        for com in coms:
+            try:
+                date_post = datetime.datetime.fromtimestamp(int(com['created_at'] / 1000000)).strftime(
+                    '%Y-%m-%d %H:%M:%S')
+            except OSError:
+                try:
+                    date_post = datetime.datetime.fromtimestamp(int(com['created_at'])).strftime(
+                        '%Y-%m-%d %H:%M:%S')
+                except ValueError:
+                    date_post = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+                except OSError:
+                    date_post = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+            comments.append({'comment_id': com['pk'], 'user_id': com['user_id'], 'text': com['text'],
+                             'username': com['user']['username'], 'is_private': com['user']['is_private'],
+                             'comment_add': date_post, 'post_id': post_id})
+        return comments
+
     def get_user_posts(self, user_id):
         """
         Возвращает последние посты пользователя
@@ -110,10 +149,16 @@ class InstaStat:
 
         post_id = post['id']
         like_count = post['like_count']
-        comment_count = post['comment_count']
+        try:
+            comment_count = post['comment_count']
+        except KeyError:
+            comment_count = 0
         filter_type = post['filter_type']
         has_liked = post['has_liked']
-        has_more_comments = post['has_more_comments']
+        try:
+            has_more_comments = post['has_more_comments']
+        except KeyError:
+            has_more_comments = 0
         if post['caption'] is not None:
             text_post = post['caption']['text']
         else:
@@ -146,6 +191,7 @@ class InstaStat:
             add_loc_name = 0
 
         likers = self.get_likers(post_id)
+        comments = self.get_comments(post_id)
 
         answer = {
             'post_id': post_id,
@@ -161,7 +207,8 @@ class InstaStat:
             'add_loc_name': add_loc_name,
             'date_post': date_post,
             'likers': likers,
-            'title':text_post
+            'title': text_post,
+            'comments': comments
         }
         return answer
 
@@ -203,9 +250,15 @@ class InstaStat:
                 all_like += 1
 
         # коэффициент приверженности подписчиков
-        adherence_per = round(adherence_count / len(stat_post) / len(follrs), 2)
+        try:
+            adherence_per = round(adherence_count / len(stat_post) / len(follrs), 2)
+        except ZeroDivisionError:
+            adherence_per = 0
         # коэффициент генерирования лайков, среднее количество лайков на пост
-        like_per_post = round(all_like / len(stat_post), 2)
+        try:
+            like_per_post = round(all_like / len(stat_post), 2)
+        except ZeroDivisionError:
+            like_per_post = 0
 
         return adherence_per, like_per_post, all_like, len(stat_post)
 
@@ -242,7 +295,6 @@ class InstaStat:
         followings = self.get_total_following(user_id)
         posts = self.get_user_posts(user_id)
         follrs, follws, stat_post = self.create_data(followers, followings, posts)
-
         ratio_fw_fr, mutual_per = self.get_s_w_stat(follrs, follws)
         adherence_per, like_per_post, n_likes, n_posts = self.get_like_stat(stat_post, follrs)
         return followers, followings, stat_post, ratio_fw_fr, mutual_per, adherence_per, like_per_post, n_likes, n_posts
