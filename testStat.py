@@ -2,8 +2,8 @@ from base import BaseUser
 from InstaStatistick import InstaStat
 
 loc_per = 598476186
-user = 'syrnikov_pavel'
-password = 'Nastya26042015'
+user = '*'
+password = '*'
 
 
 class Insta:
@@ -105,3 +105,6 @@ class Insta:
         self.update_followers()
         self.update_followings()
         self.update_users()
+
+inst = Insta(user=user, password=password)
+inst.mode_statistick()

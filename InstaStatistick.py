@@ -76,21 +76,22 @@ class InstaStat:
         """
         Возвращает список лайкнувших пост пользователей
         """
-        answer = {}
-
-        sucsess = True
-        while sucsess:
-            _ = self.api.getMediaLikers(post_id)
-            answer = self.api.LastJson
-            if answer['status'] == 'ok':
-                sucsess = False
-
         likers = []
-        users = answer['users']
-        for user in users:
-            likers.append({'user_id': user['pk'], 'username': user['username'], 'is_private': user['is_private']})
+        try:
+            _ = self.api.getMediaLikers(post_id)
+            likers.extend(self.api.LastJson.get('users', ''))
+        except json.decoder.JSONDecodeError:
+            time.sleep(1)
+            _ = self.api.getMediaLikers(post_id)
+            likers.extend(self.api.LastJson.get('users', ''))
 
-        return likers
+        likers_return = []
+        for liker in likers:
+            likers_return.append({'user_id': liker['pk'],
+                                  'username': liker['username'],
+                                  'is_private': liker['is_private']})
+
+        return likers_return
 
     def get_comments(self, post_id):
         """
@@ -101,10 +102,17 @@ class InstaStat:
         answer = {}
         sucsess = True
         while sucsess:
-            _ = self.api.getMediaComments(post_id)
-            answer = self.api.LastJson
-            if answer['status'] == 'ok':
-                sucsess = False
+            try:
+                _ = self.api.getMediaComments(post_id)
+                answer = self.api.LastJson
+                if answer['status'] == 'ok':
+                    sucsess = False
+            except json.decoder.JSONDecodeError:
+                time.sleep(1)
+                _ = self.api.getMediaComments(post_id)
+                answer = self.api.LastJson
+                if answer['status'] == 'ok':
+                    sucsess = False
 
         comments = []
         coms = answer['comments']
@@ -134,11 +142,19 @@ class InstaStat:
         sucsess = True
         next_max_id = ''
         while sucsess:
-            _ = self.api.getUserFeed(user_id, maxid=next_max_id)
-            user_posts.extend(self.api.LastJson.get('items', ''))
-            next_max_id = self.api.LastJson.get('next_max_id', '')
-            if next_max_id == '':
-                sucsess = False
+            try:
+                _ = self.api.getUserFeed(user_id, maxid=next_max_id)
+                user_posts.extend(self.api.LastJson.get('items', ''))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
+                if next_max_id == '':
+                    sucsess = False
+            except json.decoder.JSONDecodeError:
+                time.sleep(1)
+                _ = self.api.getUserFeed(user_id, maxid=next_max_id)
+                user_posts.extend(self.api.LastJson.get('items', ''))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
+                if next_max_id == '':
+                    sucsess = False
 
         return user_posts
 
@@ -283,11 +299,19 @@ class InstaStat:
         sucsess = True
         next_max_id = ''
         while sucsess:
-            _ = self.api.getLocationFeed(location_id, maxid=next_max_id)
-            posts.extend(self.api.LastJson.get('items'))
-            next_max_id = self.api.LastJson.get('next_max_id', '')
-            if next_max_id == '':
-                sucsess = False
+            try:
+                _ = self.api.getLocationFeed(location_id, maxid=next_max_id)
+                posts.extend(self.api.LastJson.get('items'))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
+                if next_max_id == '':
+                    sucsess = False
+            except json.decoder.JSONDecodeError:
+                time.sleep(1)
+                _ = self.api.getLocationFeed(location_id, maxid=next_max_id)
+                posts.extend(self.api.LastJson.get('items'))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
+                if next_max_id == '':
+                    sucsess = False
         return posts
 
     def get_statistick_about_user(self, user_id):
