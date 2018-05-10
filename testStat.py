@@ -106,5 +106,6 @@ class Insta:
         self.update_followings()
         self.update_users()
 
-inst = Insta(user=user, password=password)
-inst.mode_statistick()
+if __name__ == "__main__":
+    inst = Insta(user=user, password=password)
+    inst.mode_statistick()

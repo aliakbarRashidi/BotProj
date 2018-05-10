@@ -3,6 +3,7 @@ import datetime
 import time
 import json
 
+
 class InstaStat:
 
     def __init__(self, user, password):
@@ -99,39 +100,43 @@ class InstaStat:
         :param post_id: уникальное значение поста
         :return: список комментариев к посту
         """
-        answer = {}
+        comments = []
         sucsess = True
+        next_max_id = ''
         while sucsess:
             try:
-                _ = self.api.getMediaComments(post_id)
-                answer = self.api.LastJson
-                if answer['status'] == 'ok':
+                _ = self.api.getMediaComments(mediaId=post_id, max_id=next_max_id)
+                comments.extend(self.api.LastJson.get('comments', ''))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
+                if next_max_id == '':
                     sucsess = False
             except json.decoder.JSONDecodeError:
                 time.sleep(1)
-                _ = self.api.getMediaComments(post_id)
-                answer = self.api.LastJson
-                if answer['status'] == 'ok':
+                _ = self.api.getMediaComments(mediaId=post_id, max_id=next_max_id)
+                comments.extend(self.api.LastJson.get('comments', ''))
+                next_max_id = self.api.LastJson.get('next_max_id', '')
+                if next_max_id == '':
                     sucsess = False
 
-        comments = []
-        coms = answer['comments']
-        for com in coms:
+        comments_return = []
+        for comment in comments:
             try:
-                date_post = datetime.datetime.fromtimestamp(int(com['created_at'] / 1000000)).strftime(
-                    '%Y-%m-%d %H:%M:%S')
+                date_post = datetime.datetime.fromtimestamp(int(comment['created_at'] / 1000000)).strftime(
+                            '%Y-%m-%d %H:%M:%S')
             except OSError:
                 try:
-                    date_post = datetime.datetime.fromtimestamp(int(com['created_at'])).strftime(
-                        '%Y-%m-%d %H:%M:%S')
+                    date_post = datetime.datetime.fromtimestamp(int(comment['created_at'])).strftime(
+                                '%Y-%m-%d %H:%M:%S')
                 except ValueError:
                     date_post = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
                 except OSError:
                     date_post = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-            comments.append({'comment_id': com['pk'], 'user_id': com['user_id'], 'text': com['text'],
-                             'username': com['user']['username'], 'is_private': com['user']['is_private'],
-                             'comment_add': date_post, 'post_id': post_id})
-        return comments
+            comments_return.append({'comment_id': comment['pk'], 'user_id': comment['user_id'],
+                                    'text': comment['text'], 'username': comment['user']['username'],
+                                    'is_private': comment['user']['is_private'],
+                                    'comment_add': date_post, 'post_id': post_id})
+
+        return comments_return
 
     def get_user_posts(self, user_id):
         """
