@@ -44,8 +44,8 @@ def main():
         # Зубарево Hills - 1029136137
         # Ушаково - 500419352
         loc_per = 406521032
-        user = 'perevalovosad'
-        password = 'Pavel12291993'
+        user = '*'
+        password = '*'
         inst_bot = InstagramBot(user, password)
         inst_bot.like_by_location(loc_per)
         inst_bot.like_followings_followings()
