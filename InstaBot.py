@@ -39,6 +39,10 @@ class InstagramBot(Insta):
 
 def main():
     try:
+        # Перевалово - 406521032
+        # Perevalovo - 598476186
+        # Зубарево Hills - 1029136137
+        # Ушаково - 500419352
         loc_per = 406521032
         user = 'perevalovosad'
         password = 'Pavel12291993'

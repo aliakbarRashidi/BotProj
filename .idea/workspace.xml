@@ -43,8 +43,8 @@
       <file leaf-file-name="InstaStatistick.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/InstaStatistick.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="151" column="69" lean-forward="false" selection-start-line="150" selection-start-column="16" selection-end-line="151" selection-end-column="69" />
+            <state relative-caret-position="82">
+              <caret line="165" column="35" lean-forward="false" selection-start-line="165" selection-start-column="35" selection-end-line="165" selection-end-column="35" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
                 <element signature="e#284#459#0" expanded="false" />
@@ -52,6 +52,7 @@
                 <element signature="e#1585#2609#0" expanded="false" />
                 <element signature="e#2654#3331#0" expanded="false" />
                 <element signature="e#3378#5400#0" expanded="false" />
+                <element signature="e#5449#6299#0" expanded="false" />
                 <element signature="e#6345#8700#0" expanded="false" />
                 <element signature="e#8766#9527#0" expanded="false" />
                 <element signature="e#9597#10483#0" expanded="false" />
@@ -121,8 +122,8 @@
       <file leaf-file-name="InstaBot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/InstaBot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="52" column="10" lean-forward="false" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
+            <state relative-caret-position="187">
+              <caret line="44" column="29" lean-forward="false" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -244,7 +245,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25615764" sideWeight="0.49394855" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -263,6 +264,32 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -299,6 +326,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -397,6 +425,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -495,6 +524,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -540,6 +570,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -599,6 +630,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -627,6 +659,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -676,6 +709,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -732,6 +766,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -781,6 +816,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -888,8 +924,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/InstaStatistick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="151" column="69" lean-forward="false" selection-start-line="150" selection-start-column="16" selection-end-line="151" selection-end-column="69" />
+        <state relative-caret-position="82">
+          <caret line="165" column="35" lean-forward="false" selection-start-line="165" selection-start-column="35" selection-end-line="165" selection-end-column="35" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
             <element signature="e#284#459#0" expanded="false" />
@@ -897,6 +933,7 @@
             <element signature="e#1585#2609#0" expanded="false" />
             <element signature="e#2654#3331#0" expanded="false" />
             <element signature="e#3378#5400#0" expanded="false" />
+            <element signature="e#5449#6299#0" expanded="false" />
             <element signature="e#6345#8700#0" expanded="false" />
             <element signature="e#8766#9527#0" expanded="false" />
             <element signature="e#9597#10483#0" expanded="false" />
@@ -909,8 +946,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/InstaBot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="52" column="10" lean-forward="false" selection-start-line="52" selection-start-column="10" selection-end-line="52" selection-end-column="10" />
+        <state relative-caret-position="187">
+          <caret line="44" column="29" lean-forward="false" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
