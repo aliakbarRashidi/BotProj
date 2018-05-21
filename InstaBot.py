@@ -2,10 +2,6 @@ from testStat import Insta
 import time
 import random
 
-loc_per = 406521032
-user = '*'
-password = '*'
-
 
 class InstagramBot(Insta):
     likes = 0
@@ -41,6 +37,17 @@ class InstagramBot(Insta):
                     break
 
 
-inst_bot = InstagramBot(user, password)
-inst_bot.like_by_location(loc_per)
-inst_bot.like_followings_followings()
+def main():
+    try:
+        loc_per = 406521032
+        user = 'perevalovosad'
+        password = 'Pavel12291993'
+        inst_bot = InstagramBot(user, password)
+        inst_bot.like_by_location(loc_per)
+        inst_bot.like_followings_followings()
+    except KeyboardInterrupt:
+        print("Прервано пользователем")
+        print("Поставлено {0} лайков".format(InstagramBot.likes))
+
+if __name__ == "__main__":
+    main()
