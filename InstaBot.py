@@ -10,8 +10,8 @@ class InstagramBot(Insta):
         if post['has_liked'] is False:
             self.insta.api.like(post['id'])
             InstagramBot.likes += 1
-            time.sleep(random.randint(10, 20) + 60)
             print("Like {0} added".format(InstagramBot.likes))
+            time.sleep(random.randint(10, 20) + 60)
             return True
 
     def like_by_location(self, location_id):
@@ -30,7 +30,7 @@ class InstagramBot(Insta):
                     followings.append(fw)
 
         for following in followings:
-            _ = self.insta.api.getUserFeed(following)
+            _ = self.insta.api.getUserFeed(following['user_id'])
             user_posts = self.insta.api.LastJson.get('items', '')
             for post in user_posts:
                 if self.get_like(post) is True:
