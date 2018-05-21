@@ -43,11 +43,14 @@ def main():
         # Perevalovo - 598476186
         # Зубарево Hills - 1029136137
         # Ушаково - 500419352
-        loc_per = 406521032
+        loc_per = {406521032: "Перевалово", 598476186: "Perevalovo", 1029136137: "Зубарево", 500419352: "Ушаково"}
         user = '*'
         password = '*'
         inst_bot = InstagramBot(user, password)
-        inst_bot.like_by_location(loc_per)
+        for loc in loc_per:
+            print("Запуск лайк-бота по постам {0}".format(loc_per[loc]))
+            inst_bot.like_by_location(loc)
+        print("Запуск лайк-бота по фолловерам фолловеров")
         inst_bot.like_followings_followings()
     except KeyboardInterrupt:
         print("Прервано пользователем")

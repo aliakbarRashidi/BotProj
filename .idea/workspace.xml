@@ -28,7 +28,7 @@
       <file leaf-file-name="testStat.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testStat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="68">
               <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
@@ -123,8 +123,8 @@
       <file leaf-file-name="InstaBot.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/InstaBot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+            <state relative-caret-position="272">
+              <caret line="52" column="56" lean-forward="false" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -192,6 +192,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -199,37 +200,10 @@
               <item name="InstApi" type="b2602c69:ProjectViewProjectNode" />
               <item name="InstApi" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="InstApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InstApi" type="462c0819:PsiDirectoryNode" />
-              <item name="myvenv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InstApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InstApi" type="462c0819:PsiDirectoryNode" />
-              <item name="myvenv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InstApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InstApi" type="462c0819:PsiDirectoryNode" />
-              <item name="myvenv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="InstApi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InstApi" type="462c0819:PsiDirectoryNode" />
-              <item name="myvenv" type="462c0819:PsiDirectoryNode" />
-              <item name="Lib" type="462c0819:PsiDirectoryNode" />
-              <item name="site-packages" type="462c0819:PsiDirectoryNode" />
-              <item name="InstagramAPI" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -278,7 +252,7 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21558245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21860817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5060514" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -338,6 +312,83 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/testStat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+            <element signature="e#175#346#0" expanded="false" />
+            <element signature="e#388#2770#0" expanded="false" />
+            <element signature="e#2813#4606#0" expanded="false" />
+            <element signature="e#4644#6164#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10982">
+          <caret line="646" column="5" lean-forward="false" selection-start-line="646" selection-start-column="5" selection-end-line="646" selection-end-column="5" />
+          <folding>
+            <element signature="e#162#661#0" expanded="false" />
+            <element signature="e#698#831#0" expanded="false" />
+            <element signature="e#875#1391#0" expanded="false" />
+            <element signature="e#1439#2192#0" expanded="false" />
+            <element signature="e#2240#2998#0" expanded="false" />
+            <element signature="e#3042#3848#0" expanded="false" />
+            <element signature="e#3892#4833#0" expanded="false" />
+            <element signature="e#4880#5716#0" expanded="false" />
+            <element signature="e#5770#6720#0" expanded="false" />
+            <element signature="e#6803#7835#0" expanded="false" />
+            <element signature="e#7905#10332#0" expanded="false" />
+            <element signature="e#10404#12879#0" expanded="false" />
+            <element signature="e#12980#14087#0" expanded="false" />
+            <element signature="e#14175#15108#0" expanded="false" />
+            <element signature="e#15215#16782#0" expanded="false" />
+            <element signature="e#16881#17413#0" expanded="false" />
+            <element signature="e#17586#18477#0" expanded="false" />
+            <element signature="e#18615#19429#0" expanded="false" />
+            <element signature="e#19506#21981#0" expanded="false" />
+            <element signature="e#22154#22735#0" expanded="false" />
+            <element signature="e#22817#25255#0" expanded="false" />
+            <element signature="e#25517#26409#0" expanded="false" />
+            <element signature="e#26471#28839#0" expanded="false" />
+            <element signature="e#28887#30158#0" expanded="false" />
+            <marker date="1525675660710" expanded="true" signature="1046:1324" ph="CREATE TABLE... users" />
+            <marker date="1525675660710" expanded="true" signature="1614:2125" ph="CREATE TABLE... followers" />
+            <marker date="1525675660710" expanded="true" signature="2415:2931" ph="CREATE TABLE... following" />
+            <marker date="1525675660710" expanded="true" signature="3213:3781" ph="CREATE TABLE... posts" />
+            <marker date="1525675660710" expanded="true" signature="4063:4766" ph="CREATE TABLE... likes" />
+            <marker date="1525675660710" expanded="true" signature="5054:5649" ph="CREATE TABLE... comments" />
+            <marker date="1525675660710" expanded="true" signature="5951:6653" ph="CREATE TABLE... users_statistic" />
+            <marker date="1525675660710" expanded="true" signature="9399:9458" ph="INSERT OR IG... followers" />
+            <marker date="1525675660710" expanded="true" signature="10195:10255" ph="INSERT OR RE... followers" />
+            <marker date="1525675660710" expanded="true" signature="11926:11985" ph="INSERT OR IG... following" />
+            <marker date="1525675660710" expanded="true" signature="12741:12801" ph="INSERT OR RE... following" />
+            <marker date="1525675660710" expanded="true" signature="13829:13854" ph="UPDATE missi... " />
+            <marker date="1525675660710" expanded="true" signature="14894:14906" ph="DELETE FROM " />
+            <marker date="1525675660710" expanded="true" signature="16521:16537" ph="SELECT missi... missing_value" />
+            <marker date="1525675660710" expanded="true" signature="21099:21160" ph="INSERT OR IG... likes" />
+            <marker date="1525675660710" expanded="true" signature="21845:21907" ph="INSERT OR RE... likes" />
+            <marker date="1525675660710" expanded="true" signature="24328:24393" ph="INSERT OR RE... comments" />
+            <marker date="1525675660710" expanded="true" signature="25114:25179" ph="INSERT OR RE... comments" />
+            <marker date="1525675660710" expanded="true" signature="28694:28764" ph="INSERT OR IG... posts" />
+            <marker date="1525675660710" expanded="true" signature="30028:30083" ph="INSERT OR IG... users" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstaBot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="765">
+          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/testStat.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -986,7 +1037,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testStat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="68">
           <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
@@ -1051,6 +1102,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/ImageUtils.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/InstagramAPI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="169">
+          <caret line="709" column="48" lean-forward="false" selection-start-line="709" selection-start-column="48" selection-end-line="709" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/InstaBot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="52" column="56" lean-forward="false" selection-start-line="52" selection-start-column="56" selection-end-line="52" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/InstaStatistick.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -1069,46 +1151,6 @@
             <element signature="e#10549#10956#0" expanded="false" />
             <element signature="e#11012#11776#0" expanded="false" />
             <element signature="e#11836#12348#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/ImageUtils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/myvenv/Lib/site-packages/InstagramAPI/InstagramAPI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="709" column="48" lean-forward="false" selection-start-line="709" selection-start-column="48" selection-end-line="709" selection-end-column="48" />
-          <folding>
-            <element signature="e#47#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/InstaBot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="47" column="21" lean-forward="false" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
